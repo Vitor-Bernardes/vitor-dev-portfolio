@@ -11,7 +11,7 @@ closeMenu.addEventListener("click", () => {
 	menuMobile.classList.add("translate-x-full");
 });
 
-//Cards Porjects
+//Cards Projects
 const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modalContent");
 const closeModal = document.getElementById("closeModal");
@@ -49,3 +49,22 @@ function closeModalFn() {
 		modal.classList.remove("flex");
 	}, 200);
 }
+
+//Abrir as abas dos cards
+const versionToggles = document.querySelectorAll(".versionToggle");
+
+versionToggles.forEach((toggle) => {
+	const content = toggle.parentElement.querySelector(".versionContent");
+	const arrow = toggle.querySelector("span");
+
+	toggle.addEventListener("click", () => {
+		// verifica se está aberta
+		if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+			content.style.maxHeight = "0px";
+			arrow.style.transform = "rotate(0deg)";
+		} else {
+			content.style.maxHeight = content.scrollHeight + "px";
+			arrow.style.transform = "rotate(180deg)";
+		}
+	});
+});
